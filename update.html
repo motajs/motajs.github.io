@@ -1,0 +1,31 @@
+<html><body>waiting<script>
+function printf(str_){document.write(str_)}
+function postsomething() {
+    datastr='{'+
+    '"pwd":""'+
+    ',"shortUrl":'+'"update"'+
+    ',"longUrl":""'+
+    '}';
+    var xhr = function(){
+        if (window.XMLHttpRequest) {
+            return new XMLHttpRequest();
+        }else{
+            return new ActiveObject('Micrsorf.XMLHttp');
+        }
+    }();
+    xhr.onreadystatechange = function(){
+    switch(xhr.readyState){
+        case 4 : 
+            if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
+                printf(xhr.responseText);
+            }else{
+                printf('error:' + xhr.status+'<br>'+(xhr.responseText||''));
+            }
+    }
+}
+xhr.open('post','http://mota.pw:4242/');
+xhr.setRequestHeader('Content-Type','text/plain')
+xhr.send(datastr);
+}
+postsomething();
+</script></body></html>
