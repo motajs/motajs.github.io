@@ -1,1 +1,15 @@
-<html><body><script>window.location='http://mota.pw:4242'</script></body></html>
+<html><body><script>
+var href = window.location.href.split('https://motajs.github.io')[1];
+var path = window.location.pathname.split('/')[1];
+var gotourl = 'http://mota.pw:4242'
+var redirect = {
+    'update':'https://motajs.github.io/update.html',
+    'setting':'http://mota.pw:4242/setting',
+    'home':'http://mota.pw:4242/',
+    'g':'http://mota.pw:4242/',
+    'gamelist':'http://mota.pw:4242/',
+};
+if(redirect[path])gotourl=redirect[path];
+else gotourl+=href;
+window.location=gotourl;
+</script></body></html>
