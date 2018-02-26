@@ -225,9 +225,10 @@ iframe {border-width:0;}
   }
   //添加到<ul/>中
   var towerIdToHTML = function(towerId) {
-    var special = '';
+    var special = '',_special='';
     if (urlmap[towerId].authString){
       special = urlmap[towerId].authString;
+      _special = ' style="bottom: 50px;"';
     }
     var tags = [];
     if (urlmap[towerId].tag){
@@ -248,7 +249,8 @@ iframe {border-width:0;}
     return ['<a href="',urlmap[towerId].long,'">',
       '<div class="towerTab" id="towerId_',towerId,'"><p>',
       urlmap[towerId].short[0],auth,tags.join(''),
-      '</p><p class="towerInfo"></p>'+special+'</div>',
+      '</p><p class="towerInfo"',_special,'></p>',
+      special,'</div>',
       '</a>\n'
     ].join('');
   }
