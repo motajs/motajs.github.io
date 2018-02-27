@@ -177,6 +177,7 @@ iframe {border-width:0;}
   <option value="difficulty">按难度排序</option>
   <option value="time">按发布时间排序</option>
   <option value="popularity">按人气排序</option>
+  <option value="首发">筛选[首发]tag</option>
 </select>
 <hr>
 <div style='margin:10px'>
@@ -197,7 +198,8 @@ iframe {border-width:0;}
   //<!-- urlmap START -->
   urlmap = {
     'fengleijidu': {'long': 'https://ckcz123.com/games/fengleijidu/',
-    'short': ['风雷缉毒', 'fengleijidu', 't5']},
+    'short': ['风雷缉毒', 'fengleijidu', 't5'],
+    'tag':[{'首发':10}]},
     'hansel': {'long': 'https://ckcz123.com/games/hansel/',
     'short': ['汉塞尔与格莱特', 'hansel', 't8']},
     'juesai1f': {'long': 'https://ckcz123.com/games/juesai1f/',
@@ -393,12 +395,33 @@ Object.keys(urlmap).forEach(function(towerId){
 
 //time,difficulty,popularity
 function sortTower(index) {
+  var tags={'首发':true}
+  if(tags[index]){
+    showTowerByTag(index);
+    return;
+  }
   towers=document.getElementById("towers");
   Object.keys(urlmap).sort(function(a,b){return -(urlmap[a].sortIndex[index]-urlmap[b].sortIndex[index])}).forEach(function(towerId){
     var node=urlmap[towerId].node;
+    node.style.display='';
     towers.removeChild(node);
     towers.appendChild(node);
   });
+}
+function showTowerByTag(index) {
+  for(towerId in urlmap){
+    var tag = urlmap[towerId].tag||[{}];
+    var show_ = (function(){
+      for(var tag_ in tag){
+        if(typeof(tag[tag_][index])!==typeof(undefined))return true
+      }
+    })();
+    if(show_){
+      urlmap[towerId].node.style.display='';
+    } else {
+      urlmap[towerId].node.style.display='none';
+    }
+  }
 }
 document.getElementById("sortTowerSelect").onchange = function(){
   sortTower(document.getElementById("sortTowerSelect").value);
