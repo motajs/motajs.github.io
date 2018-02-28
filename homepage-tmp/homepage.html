@@ -190,6 +190,8 @@ iframe {border-width:0;}
   <p><a href="http://www.bilibili.com/video/av17608025/">Video / 视频教程</a></p>
   <p><a href="https://ckcz123.github.io/mota-js">Docs / 使用文档说明</a></p>
 
+  <p><a href="https://tieba.baidu.com/f?ie=utf-8&kw=%E9%AD%94%E5%A1%94">友情链接 : 魔塔吧</a></p>
+
 </div>
 
 </div>
@@ -356,7 +358,10 @@ queryOneTower = function(towerId) {
             urlmap[towerId].sortIndex.difficulty=10000+parseInt(t.people);
             urlmap[towerId].sortIndex.maxTime=2345678901234+parseInt(t.people);
           } else {
-            urlmap[towerId].sortIndex.difficulty=t.people/t.score;
+            var difficulty = function(p,s){
+              return p/s+10000/(Math.pow(s+1,5))
+            }
+            urlmap[towerId].sortIndex.difficulty=difficulty(parseInt(t.people),parseInt(t.score));
             
           }
           urlmap[towerId].sortIndex.popularity+=parseInt(t.people);
