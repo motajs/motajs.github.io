@@ -1,4 +1,10 @@
 urlmap = {
+'huxiao': {'auth': '终末之扉',
+             'auth2': '终末之扉',
+             'long': 'https://ckcz123.com/games/huxiao/',
+             'short': ['呼啸山庄', 'huxiao', 't37'],
+             'tag': [],
+             'towerid': 'huxiao'},
 'shenghua': {'auth': 'CC',
              'auth2': '冰魂',
              'long': 'https://ckcz123.com/games/shenghua/',
