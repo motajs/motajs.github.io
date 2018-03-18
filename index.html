@@ -26,12 +26,33 @@ iframe {border-width:0;}
 .towerTab {
   float: left;
   margin: 5px 5px 5px 10px;
-  overflow: auto;
-  
-  height: 193px;
-  width: 324px;
-
+  overflow: hidden;
   position:relative;
+  height: 0;
+  cursor: pointer;
+  padding-bottom: 50%;
+  width: 95%;
+}
+
+@media (min-width: 768px) {
+  .towerTab {
+    padding-bottom: 25%;
+    width: 47%;
+  }
+}
+
+@media (min-width: 992px) {
+  .towerTab {
+    padding-bottom: 17%;
+    width: 31%;
+  }
+}
+
+@media (min-width: 1400px) {
+  .towerTab {
+    padding-bottom: 12%;
+    width: 23%;
+  }
 }
 
 .towerAuths {
@@ -82,6 +103,7 @@ iframe {border-width:0;}
 <!-- css END -->
 <script src="/urlmap.js"></script>
 <script type="text/javascript">
+/*
   var twidth = 345;
   var ratio = 1.25/(window.devicePixelRatio || 1);
   if (ratio>1.0001) {
@@ -92,9 +114,9 @@ iframe {border-width:0;}
     isMobile=1;
   }
   if(isMobile){
-    /* var cssNode=document.createElement("style");
+     var cssNode=document.createElement("style");
     cssNode.innerHTML=mobilecss.innerText;
-    document.head.appendChild(cssNode); */
+    document.head.appendChild(cssNode); 
     //document.head.innerHTML+='<style>'+mobilecss.innerText+'</style>';
     var wt = 2;//~~(innerWidth/twidth);
     twidth=~~(innerWidth/wt)-20;
@@ -105,7 +127,7 @@ iframe {border-width:0;}
     'height: ',theight,'px;','width: ',twidth,
     'px;','}\n'
   ].join('');
-  document.head.appendChild(cssNode);
+  document.head.appendChild(cssNode);*/
 </script>
 <canvas id="background"></canvas>
 <script>
@@ -121,7 +143,7 @@ iframe {border-width:0;}
     background.height = innerHeight*ratio;
     dc.scale(ratio, ratio);
 
-    var bsize=32+isMobile*32;
+    var bsize=32;
     var fullWidth=~~((innerWidth-17)*ratio);
     var fullHeight=~~(innerHeight*ratio);
     
@@ -229,12 +251,12 @@ iframe {border-width:0;}
     var auth = Array(3).join('&nbsp;')+'<span class="towerAuths"><span class="towerAuth">'+urlmap[towerId].auth+'</span>';
     if(urlmap[towerId].auth!==urlmap[towerId].auth2)auth+='<span class="towerAuth2">/'+urlmap[towerId].auth2+'</span>';
     auth+='</span>';
-    return ['<a href="',urlmap[towerId].long,'">',
-      '<div class="towerTab" id="towerId_',towerId,'"><p>',
+    return [
+      '<div class="towerTab" id="towerId_',towerId,'" onclick="window.open(\'',urlmap[towerId].long,'\', \'_blank\')"><p>',
       urlmap[towerId].short[0],auth,tags.join(''),
       '</p><p class="towerInfo"',_special,'></p>',
       special,'</div>',
-      '</a>\n'
+      '\n'
     ].join('');
   }
 
@@ -244,7 +266,7 @@ iframe {border-width:0;}
   });
   document.getElementById("towers").innerHTML += towersHTML;
   for(var id in urlmap){
-    urlmap[id].node=document.getElementById("towerId_"+id).parentNode;
+    urlmap[id].node=document.getElementById("towerId_"+id);
     urlmap[id].sortIndex.time=urlmap[id].short[2].slice(1);
     
   }
