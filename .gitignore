@@ -119,3 +119,11 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+# 去掉本地调试文件
+node_modules/*
+server.js
+package.json
+package-lock.json
+*.log
+启动服务.exe
