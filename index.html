@@ -321,15 +321,13 @@ queryOneTower = function(towerId) {
           if (toAdd) text+="\n\n";
           toAdd=true;
           if (t.hard!='') text+=t.hard+"难度： "
-          text+="已有"+t.people+"人次游戏，"+t.score+"人次通关。";
+          text+="已有"+t.people+"("+t.peopleip+")人次游戏，"+t.score+"("+t.scoreip+")人次通关。";
           t.info.forEach(function(ending) {
             if (ending.ending!='') {
-              text+="\n"+ending.ending+"： 已有"+ending.score+"人次通关。";
+              text+="\n"+ending.ending+"： 已有"+ending.score+"("+ending.scoreip+")人次通关。";
             }
             if (m_core.isset(ending.max) && ending.max>0) {
               text+="\n当前MAX为"+ending.max+"，最早由 "+(ending.username||"匿名")+" 于"+m_core.formatDate(new Date(1000*ending.timestamp))+"打出。";
-
-
               urlmap[towerId].sortIndex.maxTime=1000*ending.timestamp;
             }
           })
@@ -340,7 +338,7 @@ queryOneTower = function(towerId) {
             var difficulty = function(p,s){
               return p/s+10000/(Math.pow(s+1,5))
             }
-            urlmap[towerId].sortIndex.difficulty=difficulty(parseInt(t.people),parseInt(t.score));
+            urlmap[towerId].sortIndex.difficulty=difficulty(parseInt(t.peopleip),parseInt(t.scoreip));
             
           }
           urlmap[towerId].sortIndex.popularity+=parseInt(t.people);
