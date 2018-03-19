@@ -1,4 +1,10 @@
 urlmap = {
+'firstFloor': {'auth': '终末之扉',
+             'auth2': '终末之扉',
+             'long': 'https://ckcz123.com/games/firstFloor/',
+             'short': ['仿魔塔1层', 'firstFloor', 't38'],
+             'tag': [{'首发': 10}, {'新': 5}],
+             'towerid': 'firstFloor'},
 'huxiao': {'auth': '终末之扉',
              'auth2': '终末之扉',
              'long': 'https://ckcz123.com/games/huxiao/',
