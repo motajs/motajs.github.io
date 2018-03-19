@@ -10,7 +10,7 @@ body,iframe,div {margin:0;padding:0;font-family: Verdana, 微软雅黑; box-sizi
 a {text-decoration:none;color:rgb(0, 4, 255);}
 iframe {border-width:0;}
 .Container {
-  max-width: 90%;
+  max-width: 96%;
   margin: 20px auto;
 }
 
@@ -41,6 +41,9 @@ iframe {border-width:0;}
 }
 
 @media (min-width: 600px) {
+  .Container {
+    max-width: 95%;
+  }
   .towerTab {
     padding-bottom: 27%;
     width: 48%;
@@ -48,13 +51,19 @@ iframe {border-width:0;}
 }
 
 @media (min-width: 960px) {
+  .Container {
+    max-width: 90%;
+  }
   .towerTab {
     padding-bottom: 19%;
     width: 31.333333%;
   }
 }
 
-@media (min-width: 1264px) {
+@media (min-width: 1400px) {
+  .Container {
+    max-width: 85%;
+  }
   .towerTab {
     width: 23%;
   }
