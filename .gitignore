@@ -125,9 +125,5 @@ node_modules/*
 server.js
 package.json
 package-lock.json
-<<<<<<< HEAD
-*.log
-=======
 *.log
 启动服务.exe
->>>>>>> d817661a9830ef6b2f232c22b191d9cf0e7da4b3
