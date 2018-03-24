@@ -1,4 +1,10 @@
 urlmap = {
+'51': {'auth': 'Oz & Kenichi',
+             'auth2': '数码宝贝51',
+             'long': 'https://ckcz123.com/games/51/',
+             'short': ['51层魔塔', '51', 't40'],
+             'tag': [{'三原塔': 10000}],
+             'towerid': '51'},
 'xingji': {'auth': 'CC',
              'auth2': '见见',
              'authString': '<p class="towerAuthString"><span title="RMB88">第一个通关者可找群主领88RMB红包！</span></p>',
