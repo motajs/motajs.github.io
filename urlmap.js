@@ -7,7 +7,7 @@ urlmap = {
              'towerid': '51'},
 'xingji': {'auth': 'CC',
              'auth2': '见见',
-             'authString': '<p class="towerAuthString"><span title="RMB88">第一个通关者可找群主领88RMB红包！</span></p>',
+             'authString': '<p class="towerAuthString"><span title="RMB88">第一个通关者可找群主领88悬赏！</span></p>',
              'long': 'https://ckcz123.com/games/xingji/',
              'short': ['星际', 'xingji', 't39'],
              'tag': [],
