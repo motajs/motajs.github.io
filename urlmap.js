@@ -1,6 +1,6 @@
 urlmap = {
 '21': {'auth': 'Oz & Kenichi',
-             'auth2': '花落雨沾湿',
+             'auth2': '641/冰魂',
              'long': 'https://ckcz123.com/games/21/',
              'short': ['21层魔塔', '21', 't41'],
              'tag': [],
