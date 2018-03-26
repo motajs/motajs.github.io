@@ -1,4 +1,10 @@
 urlmap = {
+'21': {'auth': 'Oz & Kenichi',
+             'auth2': '花落雨沾湿',
+             'long': 'https://ckcz123.com/games/21/',
+             'short': ['21层魔塔', '21', 't41'],
+             'tag': [],
+             'towerid': '21'},
 '51': {'auth': 'Oz & Kenichi',
              'auth2': '数码宝贝51',
              'long': 'https://ckcz123.com/games/51/',
