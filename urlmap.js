@@ -1,4 +1,10 @@
 urlmap = {
+'jxfszt': {'auth': 'dec175',
+             'auth2': '冰魂',
+             'long': 'https://ckcz123.com/games/jxfszt/',
+             'short': ['假·小法师之塔', 'jxfszt', 't42'],
+             'tag': [],
+             'towerid': 'jxfszt'},
 '21': {'auth': 'Oz & Kenichi',
              'auth2': '花落雨沾湿/冰魂',
              'long': 'https://ckcz123.com/games/21/',
