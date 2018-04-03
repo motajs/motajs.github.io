@@ -237,6 +237,10 @@ iframe {border-width:0;}
 
   <p><a href="https://tieba.baidu.com/f?ie=utf-8&kw=%E9%AD%94%E5%A1%94">友情链接 : 魔塔吧</a></p>
 
+  <br>
+  <p>max持有数</p>
+  <p id='maxNumPrint'></p>
+
 </div>
 
 </div>
@@ -296,6 +300,7 @@ iframe {border-width:0;}
 </script>
 
 <script>
+var maxNum={};
 var loadedNum =0;
 function finishCallback(){
   loadedNum+=1;
@@ -304,6 +309,10 @@ function finishCallback(){
       urlmap[id].sortIndex.default+=urlmap[id].sortIndex.difficulty;
     }
     sortTower('default');
+    maxNumPrint = document.getElementById('maxNumPrint');
+    Object.keys(maxNum).sort(function(a,b){return -(maxNum[a]-maxNum[b])}).forEach(function(username){
+      maxNumPrint.innerText+=username+' : '+maxNum[username]+'\n'
+    });
   }
 }
 queryOneTower = function(towerId) {
@@ -371,6 +380,8 @@ queryOneTower = function(towerId) {
             }
             if (m_core.isset(ending.max) && ending.max>0) {
               text+="\n当前MAX为"+ending.max+"，最早由 "+(ending.username||"匿名")+" 于"+m_core.formatDate(new Date(1000*ending.timestamp))+"打出。";
+              var username=ending.username||"匿名";
+              maxNum[username]=(maxNum[username]||0)+1;
               urlmap[towerId].sortIndex.maxTime=1000*ending.timestamp;
             }
           })
