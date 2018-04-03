@@ -218,6 +218,10 @@ iframe {border-width:0;}
   <option value="popularity">按人气排序</option>
   <option value="首发">筛选[首发]tag</option>
 </select>
+<span>倒序</span>
+<input type="checkbox" id='order'>
+<span>查找</span>
+<input type="text" id='findTowerInput' placeholder="输入查找的字符串">
 <hr>
 <div style='margin:10px'>
   <p>HTML5魔塔交流群 : 539113091</p>
@@ -415,14 +419,16 @@ Object.keys(urlmap).forEach(function(towerId){
 });
 
 //time,difficulty,popularity
+towers=document.getElementById("towers");
+order=document.getElementById("order");
 function sortTower(index) {
   var tags={'首发':true}
   if(tags[index]){
     showTowerByTag(index);
     return;
   }
-  towers=document.getElementById("towers");
-  Object.keys(urlmap).sort(function(a,b){return -(urlmap[a].sortIndex[index]-urlmap[b].sortIndex[index])}).forEach(function(towerId){
+  
+  Object.keys(urlmap).sort(function(a,b){return (order.checked?1:-1)*(urlmap[a].sortIndex[index]-urlmap[b].sortIndex[index])}).forEach(function(towerId){
     var node=urlmap[towerId].node;
     node.style.display='';
     towers.removeChild(node);
@@ -444,9 +450,21 @@ function showTowerByTag(index) {
     }
   }
 }
-document.getElementById("sortTowerSelect").onchange = function(){
+document.getElementById("sortTowerSelect").onchange = order.onchange = function(){
   sortTower(document.getElementById("sortTowerSelect").value);
 }
+findTowerInput=document.getElementById("findTowerInput")
+findTowerInput.onchange = function(){
+  for(towerId in urlmap){
+    var show_ = urlmap[towerId].node.innerText.indexOf(findTowerInput.value)!==-1
+    if(show_){
+      urlmap[towerId].node.style.display='';
+    } else {
+      urlmap[towerId].node.style.display='none';
+    }
+  }
+}
+
 </script>
 
 
