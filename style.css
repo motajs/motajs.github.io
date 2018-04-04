@@ -123,3 +123,9 @@ iframe {border-width:0;}
 #pages span {
     padding: 4px;
 }
+
+.query {
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}

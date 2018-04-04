@@ -22,7 +22,7 @@
 <div class='Container'>
 
     <div style='margin:10px'>
-    <select id='sort' onchange="query()" style="float: left">
+    <select id='sort' onchange="query()" class="query">
       <option value="score desc" selected>难度从大到小</option>
       <option value="score">难度从小到大</option>
       <option value="people desc">人气从大到小</option>
@@ -30,20 +30,21 @@
       <option value="createtime desc">发布时间从晚到早</option>
       <option value="createtime">发布时间从早到晚</option>
     </select>
-    <select style="margin-left: 10px; float: left" id="tag" onchange="query()">
+    <select id="tag" onchange="query()" class="query">
       <option value="" selected>无</option>
       <option value="三原塔">三原塔</option>
       <option value="比赛塔">比赛塔</option>
       <option value="悬赏塔">悬赏塔</option>
     </select>
 
-    <div style="position: relative; margin-left: 10px; margin-top:-2px; float: left">
+    <div style="position: relative; margin-right: 20px; margin-top:-2px;" class="query">
         <div class="searchLogo"></div>
         <input type="text" id='search' placeholder="搜索" oninput="query()">
     </div>
 
-    <span style="margin-left: 20px; float: left" id="updatetime"></span>
-    <br>
+    <span id="updatetime" class="query"></span>
+
+    <br style="clear:both">
     
     <hr>
     </div>
