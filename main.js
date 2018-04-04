@@ -54,9 +54,9 @@ function query(page) {
 
   xhr.onload = function() {
     if (xhr.status==200) {
-        towers.innerHTML = "";
         var data = JSON.parse(xhr.response);
         var page = data.page, pages = data.pages, updatetime = data.updatetime;
+        var html = "";
         data.data.forEach(function(one) {
 
             var text='', textcss='';
@@ -65,15 +65,13 @@ function query(page) {
                 textcss='bottom: 50px';
             }
 
-            var html='<div class="towerTab" onclick="window.open(\''
+            html +='<div class="towerTab" onclick="window.open(\''
                 + one.link + '\', \'_blank\')"><p>' + one.title + '<span class="towerAuths"><span class="towerAuth">'
                 + one.author + "</span>";
             if (one.author2!='') html += '<span class="towerAuth2">/' + one.author2 + '</span>';
             html+='</span><span class="towerTag">' + one.tag.replace(/\|/g,"&nbsp;") + '</span></p>';
             html+='<p class="towerInfo" style="'+textcss+'">'+one.content.replace(/\n/g, '<br>')+'</p>';
-            html+='<p class="towerAuthString">'+one.text+"</p>\n";
-
-            document.getElementById("towers").innerHTML+=html;
+            html+='<p class="towerAuthString">'+one.text+"</p></div>\n";
         });
         var pg = "";
         if (pages>1) {
@@ -89,6 +87,8 @@ function query(page) {
               pg+='<span style="color: rgb(0,4,255); cursor: pointer" onclick="query('+(page+1)+')">下一页</span>';
         }
         
+        
+        document.getElementById("towers").innerHTML = html;
         document.getElementById("pages").innerHTML = pg;
         document.getElementById("updatetime").innerHTML = "更新时间："+updatetime;
     }
