@@ -35,12 +35,11 @@
 
 function query(page) {
 
-if (page==undefined || page==null) page=1;
-document.getElementById('page').value=page;
+  if (page==undefined || page==null) page=1;
 
-var towers = document.getElementById("towers");
-document.getElementById("pages").innerHTML = "";
-  towers.innerHTML = "正在加载中...";
+  document.getElementById("pages").innerHTML = "";
+  document.getElementById("updatetime").innerHTML = "";
+  document.getElementById("towers").innerHTML = "正在加载中... 请稍后";
   
   var formData = new FormData();
   formData.append('type', 'all');
@@ -74,9 +73,8 @@ document.getElementById("pages").innerHTML = "";
             html+='<p class="towerInfo" style="'+textcss+'">'+one.content.replace(/\n/g, '<br>')+'</p>';
             html+='<p class="towerAuthString">'+one.text+"</p>\n";
 
-            towers.innerHTML+=html;
+            document.getElementById("towers").innerHTML+=html;
         });
-        document.getElementById("page").value = page;
         var pg = "";
         if (pages>1) {
           if (page!=1)
