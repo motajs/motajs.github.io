@@ -89,6 +89,7 @@ document.getElementById("pages").innerHTML = "";
         if (page!=pages)
             pg+='<span style="color: rgb(0,4,255); cursor: pointer" onclick="query('+(page+1)+')">下一页</span>';
         document.getElementById("pages").innerHTML = pg;
+        document.getElementById("updatetime").innerHTML = "更新时间："+updatetime;
     }
     else {
         towers.innerHTML = "加载失败，HTTP "+xhr.status;
