@@ -78,16 +78,19 @@ document.getElementById("pages").innerHTML = "";
         });
         document.getElementById("page").value = page;
         var pg = "";
-        if (page!=1)
+        if (pages>1) {
+          if (page!=1)
             pg+='<span style="color: rgb(0,4,255); cursor: pointer" onclick="query('+(page-1)+')">上一页</span>';
-        for (var i=1;i<=pages;i++) {
-            if (i==page)
-                pg+='<span>'+i+'</span>';
-            else 
-                pg+='<span style="color: rgb(0,4,255); cursor: pointer" onclick="query('+i+')">'+i+'</span>';
+          for (var i=1;i<=pages;i++) {
+              if (i==page)
+                  pg+='<span>'+i+'</span>';
+              else 
+                  pg+='<span style="color: rgb(0,4,255); cursor: pointer" onclick="query('+i+')">'+i+'</span>';
+          }
+          if (page!=pages)
+              pg+='<span style="color: rgb(0,4,255); cursor: pointer" onclick="query('+(page+1)+')">下一页</span>';
         }
-        if (page!=pages)
-            pg+='<span style="color: rgb(0,4,255); cursor: pointer" onclick="query('+(page+1)+')">下一页</span>';
+        
         document.getElementById("pages").innerHTML = pg;
         document.getElementById("updatetime").innerHTML = "更新时间："+updatetime;
     }
