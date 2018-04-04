@@ -35,7 +35,7 @@
 
 function query(page) {
 
-if (page==undefined || page==null || page=='') page=document.getElementById('page'.value);
+if (page==undefined || page==null) page=1;
 document.getElementById('page').value=page;
 
 var towers = document.getElementById("towers");
