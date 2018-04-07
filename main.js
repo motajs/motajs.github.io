@@ -1,41 +1,12 @@
-(function(){
-    //背景
-    var background = document.getElementById('background');
-    var resize = function(){
-      
-      var ratio = window.devicePixelRatio || 1;
-      var dc=background.getContext('2d');
-      
-      background.width = innerWidth*ratio;
-      background.height = innerHeight*ratio;
-      dc.scale(ratio, ratio);
-  
-      var bsize=32;
-      var fullWidth=~~((innerWidth-17)*ratio);
-      var fullHeight=~~(innerHeight*ratio);
-      
-      var fullX=~~(fullWidth/bsize)-1;
-      var fullY=~~(fullHeight/bsize)-1;
-  
-      var colorA=["#f9f9f9","#fdfdfd"];
-      var colorIndex =1;
-      for(ii=0;ii<=fullX+1;ii++){
-        colorIndex=ii%2;
-        for(jj=0;jj<=fullY+1;jj++){
-          dc.fillStyle=colorA[colorIndex];
-          if(Math.random()<0.03)dc.fillStyle='#'+'ef'[~~(Math.random()*2)]+''+'ef'[~~(Math.random()*2)]+''+'ef'[~~(Math.random()*2)];
-          colorIndex=1-colorIndex;
-          dc.fillRect(ii*bsize,jj*bsize,bsize,bsize);
-        }
-      }
-    };
-    resize();
-    window.onresize = resize;
-  })();
-
 function query(page) {
 
   if (page==undefined || page==null) page=1;
+
+  localStorage.setItem('sort', document.getElementById('sort').value);
+  localStorage.setItem('perpage', document.getElementById("perpage").value);
+  localStorage.setItem('not', document.getElementById('not').checked?"true":"false");
+  localStorage.setItem('tag', document.getElementById('tag').value);
+  localStorage.setItem('search', document.getElementById('search').value);
 
   document.getElementById("pages").innerHTML = "";
   document.getElementById("updatetime").innerHTML = "";
@@ -46,6 +17,7 @@ function query(page) {
   formData.append('sort', document.getElementById('sort').value);
   formData.append('page', page);
   formData.append('perpage', document.getElementById("perpage").value);
+  formData.append('not', document.getElementById('not').checked?"not":"");
   formData.append('tag', document.getElementById('tag').value);
   formData.append('text', document.getElementById('search').value);
 
@@ -108,4 +80,51 @@ function query(page) {
   xhr.send(formData);
 }
 
-query();
+function load(key, defaultValue) {
+  var value=localStorage.getItem(key);
+  if (value==undefined || value==null) return defaultValue;
+  return value;
+}
+
+(function() {
+
+  var background = document.getElementById('background');
+    var resize = function(){
+      
+      var ratio = window.devicePixelRatio || 1;
+      var dc=background.getContext('2d');
+      
+      background.width = innerWidth*ratio;
+      background.height = innerHeight*ratio;
+      dc.scale(ratio, ratio);
+  
+      var bsize=32;
+      var fullWidth=~~((innerWidth-17)*ratio);
+      var fullHeight=~~(innerHeight*ratio);
+      
+      var fullX=~~(fullWidth/bsize)-1;
+      var fullY=~~(fullHeight/bsize)-1;
+  
+      var colorA=["#f9f9f9","#fdfdfd"];
+      var colorIndex =1;
+      for(ii=0;ii<=fullX+1;ii++){
+        colorIndex=ii%2;
+        for(jj=0;jj<=fullY+1;jj++){
+          dc.fillStyle=colorA[colorIndex];
+          if(Math.random()<0.03)dc.fillStyle='#'+'ef'[~~(Math.random()*2)]+''+'ef'[~~(Math.random()*2)]+''+'ef'[~~(Math.random()*2)];
+          colorIndex=1-colorIndex;
+          dc.fillRect(ii*bsize,jj*bsize,bsize,bsize);
+        }
+      }
+    };
+    resize();
+    window.onresize = resize;
+
+  document.getElementById('sort').value=load('sort', 'score desc');
+  document.getElementById('not').checked=JSON.parse(load('not', 'false'));
+  document.getElementById('tag').value=load('tag', '');
+  document.getElementById('search').value=load('search', '');
+  document.getElementById('perpage').value=load('perpage', '20');
+
+  query();
+})();
