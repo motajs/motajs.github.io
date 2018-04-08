@@ -69,13 +69,13 @@ function query(page) {
     }
   }
   xhr.ontimeout = function() {
-    towers.innerHTML = "加载失败，超时";
+    document.getElementById("towers").innerHTML = "加载失败，超时";
   }
   xhr.onabort = function() {
-    towers.innerHTML = "加载失败，中断";
+    document.getElementById("towers").innerHTML = "加载失败，中断";
   }
   xhr.onerror = function() {
-    towers.innerHTML = "加载失败，错误";
+    document.getElementById("towers").innerHTML = "加载失败，错误";
   }
   xhr.send(formData);
 }
