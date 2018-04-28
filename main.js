@@ -62,7 +62,11 @@ function query(page) {
         
         document.getElementById("towers").innerHTML = html;
         document.getElementById("pages").innerHTML = pg;
+        document.getElementById("pages2").innerHTML = pg;
         document.getElementById("updatetime").innerHTML = "更新时间："+updatetime;
+
+        window.scrollTo(0,0);
+
     }
     else {
         towers.innerHTML = "加载失败，HTTP "+xhr.status;
@@ -125,6 +129,7 @@ function load(key, defaultValue) {
   document.getElementById('tag').value=load('tag', '');
   document.getElementById('search').value=load('search', '');
   document.getElementById('perpage').value=load('perpage', '20');
+  document.getElementById('perpage2').value=load('perpage', '20');
 
   query();
 })();

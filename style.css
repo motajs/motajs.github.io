@@ -124,6 +124,10 @@ iframe {border-width:0;}
     padding: 4px;
 }
 
+#pages2 span {
+    padding: 4px;
+}
+
 .query {
     float: left;
     margin-right: 10px;

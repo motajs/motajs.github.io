@@ -64,11 +64,9 @@
     </div>
 
 <div class='main'>
-  <div id='towers'></div>
 
-  <br style="clear:both">
   <div style='margin:10px'>
-    <select id="perpage" onchange="query()" style="float: left; margin-right: 30px">
+    <select id="perpage" onchange="document.getElementById('perpage2').value=this.value;query()" style="float: left; margin-right: 30px">
       <option value="10">每页10个</option>
       <option value="20" selected>每页20个</option>
       <option value="30">每页30个</option>
@@ -77,6 +75,24 @@
     </select>
 
     <div style="margin-top: -2px; float: left" id="pages"></div>
+  </div>
+
+
+  <br style="clear:both">
+
+  <div id='towers' style="margin-top: 15px"></div>
+
+  <br style="clear:both">
+  <div style='margin:10px'>
+    <select id="perpage2" onchange="document.getElementById('perpage').value=this.value;query()" style="float: left; margin-right: 30px">
+      <option value="10">每页10个</option>
+      <option value="20" selected>每页20个</option>
+      <option value="30">每页30个</option>
+      <option value="40">每页40个</option>
+      <option value="50">每页50个</option>
+    </select>
+
+    <div style="margin-top: -2px; float: left" id="pages2"></div>
   </div>
 </div>
 
